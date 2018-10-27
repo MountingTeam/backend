@@ -1,13 +1,10 @@
 import { Router } from "express";
 
-import users from "./users";
-
 const router = Router();
 
+/* GET users listing. */
 router.get("/", function(req: any, res: any) {
-  res.send("api version 1.0");
+  res.send("no users!!!! Fuck!!!!!");
 });
-
-router.use("/users", users);
 
 export default router;

@@ -1,0 +1,3 @@
+{
+  "src/**/*.{js,ts}": ["tslint -p tsconfig.dev.json --fix ", "git add"],
+}
