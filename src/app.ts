@@ -1,14 +1,14 @@
 const createError = require("http-errors");
 
 import * as Express from "express";
-import router from "./api";
+import api from "./api";
 
 const app = Express();
 
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: false }));
 
-app.use("/api", router);
+app.use("/api", api);
 
 app.use(function(next: any) {
   next(createError(404));
