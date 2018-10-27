@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./dist/server.js",
+    "start": "nodemon --config nodemon.json src/server.ts",
     "build-dev": "webpack --config webpack.config.dev.js",
     "build-prod": "webpack --config webpack.config.prod.js"
   },
@@ -16,7 +16,10 @@
     "morgan": "~1.9.0"
   },
   "devDependencies": {
+    "nodemon": "^1.18.5",
     "ts-loader": "^5.2.2",
+    "ts-node": "^7.0.1",
+    "tsconfig-paths": "^3.6.0",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
     "tslint-loader": "^3.5.4",
