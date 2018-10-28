@@ -14,6 +14,7 @@ app.use(Express.urlencoded({ extended: false }));
 
 mongoose.connect(
   process.env.COMPOSE_URI || COMPOSE_URI_DEFAULT,
+  { useNewUrlParser: true },
   function(error) {
     if (error) console.error(error);
     else console.log("mongo connected");
