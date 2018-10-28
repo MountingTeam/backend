@@ -1,14 +1,24 @@
 import app from "./app";
+
 const debug = require("debug")("backend:server");
 const http = require("http");
 
-const port = normalizePort(process.env.PORT || "3000");
+const port = normalizePort(process.env.PORT || "8080");
 
 app.set("port", port);
 
 const server = http.createServer(app);
 
-server.listen(port);
+server.listen(port, (err: any) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log(
+    `GraphQL Server is now running on localhost:${process.env.PORT || 8080}`
+  );
+});
+
 server.on("error", onError);
 server.on("listening", onListening);
 
