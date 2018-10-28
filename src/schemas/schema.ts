@@ -125,7 +125,7 @@ const MutationDelete = {
 
 const MutationUpdate = {
   type: UserType,
-  description: "Edit a user",
+  description: "Edit the user",
   args: {
     id: {
       name: "UserId",
