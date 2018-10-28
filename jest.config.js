@@ -7,7 +7,7 @@ const config = {
         "^.+\\.ts$": "ts-jest"
     },
     transformIgnorePatterns: [MODULE_DIRECTORY],
-    testRegex: "/__tests__/.*.(test|spec).(ts|ts|js)$",
+    testRegex: "/__tests__/.*/.*.(test|spec).(ts|ts|js)$",
     globals: {
         "ts-jest": {
             tsConfig: "tsconfig.test.json"
