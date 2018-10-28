@@ -3,18 +3,28 @@ const createError = require("http-errors");
 import * as Express from "express";
 import api from "./api";
 
-const app = Express();
+const router = Express();
 
-app.use(Express.json());
-app.use(Express.urlencoded({ extended: false }));
+router.use(Express.json());
+router.use(Express.urlencoded({ extended: false }));
 
-app.use("/api", api);
+router.all("/*", function(
+  req: Express.Request,
+  res: Express.Response,
+  next: Express.NextFunction
+) {
+  res.contentType("json");
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
-app.use(function(next: any) {
+router.use("/api", api);
+
+router.use(function(next: Express.NextFunction) {
   next(createError(404));
 });
 
-app.use(function(err: any, req: any, res: any) {
+router.use(function(err: any, req: Express.Request, res: Express.Response) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
@@ -22,4 +32,4 @@ app.use(function(err: any, req: any, res: any) {
   res.render("error");
 });
 
-export default app;
+export default router;
