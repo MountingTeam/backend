@@ -1,19 +1,4 @@
-import * as mongoose from "mongoose";
-const Schema = mongoose.Schema;
 import { GraphQLObjectType, GraphQLID, GraphQLString } from "graphql";
-
-const { ObjectId } = mongoose.Types;
-ObjectId.prototype.valueOf = function() {
-  return this.toString();
-};
-
-const User = mongoose.model(
-  "User",
-  new Schema({
-    id: mongoose.Types.ObjectId,
-    name: String
-  })
-);
 
 const UserType = new GraphQLObjectType({
   name: "user",
@@ -29,4 +14,4 @@ const UserType = new GraphQLObjectType({
   })
 });
 
-export { User, UserType };
+export { UserType };

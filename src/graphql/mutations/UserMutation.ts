@@ -1,5 +1,6 @@
 import { GraphQLString, GraphQLNonNull } from "graphql";
-import { UserType, User } from "../types/UserType";
+import { UserType } from "../types/UserType";
+import { User } from "../../models";
 
 const createUser = {
   type: UserType,

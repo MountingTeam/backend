@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 import * as mongoose from "mongoose";
 import * as Express from "express";
 import * as graphQLHTTP from "express-graphql";
-import schema from "./schemas/schema";
+import schema from "./graphql";
 
 const COMPOSE_URI_DEFAULT = "mongodb://localhost:27017/local";
 const app = Express();
