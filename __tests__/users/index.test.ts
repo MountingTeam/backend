@@ -1,4 +1,4 @@
-import schema from '../../src/schemas/schema';
+import schema from '../../src/graphql';
 import { graphql } from "graphql";
 import setupTest from "../setup-test";
 import * as mongoose from "mongoose";
