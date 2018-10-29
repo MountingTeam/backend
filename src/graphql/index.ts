@@ -3,7 +3,7 @@ import { GraphQLObjectType, GraphQLSchema } from "graphql";
 import { userQuery } from "./queries";
 
 const QueryType = new GraphQLObjectType({
-  name: "rootQuery",
+  name: "Query",
   description:
     "This is the query which holds all possible READ entrypoints for the GraphQL API",
   fields: () => ({

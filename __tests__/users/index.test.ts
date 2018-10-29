@@ -20,20 +20,19 @@ describe('UserSchema', async () => {
     const name = "TestName"
     const updatedName = "NewTestName"
 
-    it('query', async () => {
-
+    it('userQuery', async () => {
         const query = `
         query {
-            users {
-                id, 
-                name
+            userQuery {
+                    id, 
+                    name
             }
         }
-    `;
+        `;
 
         const response = await graphql(schema, query);
         const { data } = response;
-        expect(data.users.length).toBe(0)
+        expect(data.userQuery.length).toBe(0)
     });
 
     let id: string;
@@ -41,7 +40,7 @@ describe('UserSchema', async () => {
     it('mutation add', async () => {
         const query = `
             mutation {
-                add (
+                createUser (
                     name: "${name}"
                 )
                 {
@@ -52,17 +51,14 @@ describe('UserSchema', async () => {
         `;
         const response = await graphql(schema, query);
         const { data } = response;
-        expect(data.add.name).toBe(name)
-        id = data.add.id
+        expect(data.createUser.name).toBe(name)
+        id = data.createUser.id
     });
 
     it('query with id', async () => {
-
         const query = `
         query {
-            user (
-                id: "${id}"
-            )
+            userQuery(id: "${id}")
             {
                 id, 
                 name
@@ -72,13 +68,13 @@ describe('UserSchema', async () => {
 
         const response = await graphql(schema, query);
         const { data } = response;
-        expect(data.user[0].name).toBe(name)
+        expect(data.userQuery[0].name).toBe(name)
     });
 
     it('mutation update', async () => {
         const query = `
             mutation {
-                update (
+                updateUser (
                     id: "${id}",
                     name: "${updatedName}"
                 )
@@ -90,13 +86,13 @@ describe('UserSchema', async () => {
         `;
         const response = await graphql(schema, query);
         const { data } = response;
-        expect(data.update.name).toBe(updatedName)
+        expect(data.updateUser.name).toBe(updatedName)
     });
 
     it('mutation delete', async () => {
         const query = `
             mutation {
-                delete (
+                deleteUser (
                     id: "${id}"
                 )
                 {
@@ -107,6 +103,6 @@ describe('UserSchema', async () => {
         `;
         const response = await graphql(schema, query);
         const { data } = response;
-        expect(data.delete.id).toBe(id)
+        expect(data.deleteUser.id).toBe(id)
     });
 });
